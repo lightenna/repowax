@@ -12,7 +12,7 @@ class repowatch (
   $key_directory_path   = '/etc/pki/tls/private',
   $cert_name            = undef,
   $webhook              = undef,
-  $source_path          = '/srv/dist/repowatch',
+  $source_path          = '/repowatch',
   $target_path          = '/srv/repowatch',
   $default_html_docroot = '/var/www/html',
   $watchers             = {},
