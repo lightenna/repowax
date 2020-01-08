@@ -43,7 +43,7 @@ const updateRepo = (req, res, next) => {
             matches++;
             const wdarg = escapeShell(workingdir);
             const rembrarg = escapeShell(rembra);
-            const command = `cd ${wdarg} && git --git-dir=${wdarg}/.git fetch && git --git-dir=${wdarg}/.git --work-tree=${wdarg} merge ${rembrarg}`;
+            const command = `cd ${wdarg} && git --git-dir=${wdarg}/.git fetch && git --git-dir=${wdarg}/.git --work-tree=${wdarg} merge ${rembrarg} && git --git-dir=${wdarg}/.git --work-tree=${wdarg} submodule update --init`;
             exec(command, (err, stdout, stderr) => {
                 const hostname = env.REPW_HOSTALIAS || req.headers.host;
                 if (err) {
