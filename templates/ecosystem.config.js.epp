@@ -1,0 +1,26 @@
+module.exports = {
+    apps : [{
+        name: "repowatch",
+        watch: [
+            "<%= $target_path %>/repowatch.bin",
+            "<%= $target_path %>/ecosystem.config.js"
+        ],
+        watch_delay: 1000,
+        script: "<%= $target_path %>/repowatch.bin",
+        env: {
+            NODE_ENV: "development",
+        },
+        env_production: {
+            NODE_ENV: "production",
+            PORT: <%= $service_port %>,
+            REPW_HOSTALIAS: "<%= $hostalias %>",
+            REPW_SECRET: "<%= $secret %>",
+<% if $repo_list =~ Array[Data,1] { -%>
+            REPW_PULLS: "<% $repo_list.flatten.each |$pull| { -%><%= $pull %>,<% } -%>",
+<% } -%>
+<% unless $webhook =~ Undef { -%>
+            REPW_SLACKWEBHOOK: "<%= $webhook %>"
+<% } -%>
+        }
+    }]
+};

@@ -1,0 +1,42 @@
+{
+  "name": "repowatch",
+  "version": "0.1.29",
+  "private": true,
+  "dependencies": {
+    "url": "^0.11.0",
+    "process": "^0.11.10",
+    "uuid": "^3.3.3",
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "winston": "^3.2.1",
+    "dotenv": "^8.2.0",
+    "base-64": "^0.1.0",
+    "@hapi/boom": "^8.0.1",
+    "child_process": "^1.0.2",
+    "slack-node": "^0.1.8",
+    "app-root-path": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.0.1",
+    "gulp-vinyl-zip": "^2.2.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-install": "^1.1.0",
+    "gulp-chmod": "^3.0.0",
+    "merge-stream": "^2.0.0",
+    "supertest": "^4.0.2",
+    "proxyquire": "^2.1.3",
+    "nodemon": "^2.0.2",
+    "react-scripts": "^3.3.0",
+    "pkg": "^4.4.0"
+  },
+  "pkg": {},
+  "scripts": {
+    "repowatch-dev:win32": "set DEBUG=repowatch:* && nodemon ./bin/www",
+    "trigger-repw": "curl --data \"param1=value1&param2=value2\" -XPOST http://localhost:3001/repowatch/my-repo",
+    "test": "set CI=true && set DEBUG=repowatch:* && react-scripts test src/app.test.js",
+    "build-pkg": "npm version patch && pkg --targets linux --output ../../files/srv/dist/repowatch/repowatch.bin bin/www"
+  }
+}

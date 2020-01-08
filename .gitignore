@@ -1,0 +1,41 @@
+# Ignore idea config
+.idea
+
+# Exported binaries
+files/**/*.bin
+
+# Ignore Terraform state
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+*.tfstate.lock.info
+terraform.tfstate.d
+
+# Ignore Terraform and Vagrant working directories
+.vagrant
+.terraform
+
+# Exclude go internals and test output (for unit tests)
+terraform/**/terratest/src/test/vendor
+terraform/**/terratest/pkg
+
+# Exclude r10k-managed puppet/modules folder
+puppet/modules
+puppet/.librarian
+# Exclude dynamically generated r10k config file
+puppet/r10k.yaml
+
+# Exclude node service config files
+**/node_modules
+**/.env
+**/dist-prod
+**/app.log
+
+# Ignore compiled python files
+*.pyc
+__pycache__
+
+# Temporary output files
+nohup.out
+puppet_cmd.out
+terraform_cmd.out
