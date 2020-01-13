@@ -109,5 +109,7 @@ repowatch::watchers:
 Change history
 --------------
 
+* v0.2
+    * Stopped performing automatic version patch on pkg
 * v0.1
     * Initial version of module

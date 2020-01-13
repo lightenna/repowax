@@ -1,6 +1,6 @@
 {
   "name": "repowatch",
-  "version": "0.1.33",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "url": "^0.11.0",
@@ -37,6 +37,6 @@
     "repowatch-dev:win32": "set DEBUG=repowatch:* && nodemon ./bin/www",
     "trigger-repw": "curl --data \"param1=value1&param2=value2\" -XPOST http://localhost:3001/repowatch/my-repo",
     "test": "set CI=true && set DEBUG=repowatch:* && react-scripts test src/app.test.js",
-    "build-pkg": "npm version patch && pkg --targets linux --output ../../files/repowatch/repowatch.bin bin/www"
+    "build-pkg": "pkg --targets linux --output ../../files/repowatch/repowatch.bin bin/www"
   }
 }
