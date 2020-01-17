@@ -6,7 +6,7 @@ class repowatch (
   $service_name         = 'repowatch',
   $servername           = 'localhost',
   $artifact_module      = 'repowatch',
-  $hostalias            = $::hostname,
+  $hostalias            = $::fqdn,
   $aliases              = [],
   $cert_directory_path  = '/etc/pki/tls/certs',
   $key_directory_path   = '/etc/pki/tls/private',

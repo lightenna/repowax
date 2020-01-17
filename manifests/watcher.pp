@@ -59,7 +59,7 @@ define repowatch::watcher (
     ensure  => 'present',
     content => epp('repowatch/ecosystem.config.js.epp', {
       # explicitly push through because cannot refer to repowatch::var_name in defined type
-      hostalias     => $hostalias,
+      hostalias    => $hostalias,
       target_path  => $target_path,
       service_port => $service_port,
       secret       => $secret,

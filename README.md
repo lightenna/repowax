@@ -110,6 +110,6 @@ Change history
 --------------
 
 * v0.2
-    * Stopped performing automatic version patch on pkg
+    * Stopped performing automatic version patch on pkg, hostalias defaults to ::fqdn in Puppet install
 * v0.1
     * Initial version of module
