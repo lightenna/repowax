@@ -38,7 +38,7 @@ define repowatch::watcher (
     }
     file { "repowatch-watcher-${apache_port}-${service_port}-files":
       ensure  => 'directory',
-      source  => "puppet:///modules/${artifact_module}${source_path}",
+      source  => "puppet:///modules/${artifact_module}/${source_path}",
       recurse => 'remote',
       path    => "${target_path}",
       owner   => $user,
