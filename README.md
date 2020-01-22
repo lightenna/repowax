@@ -109,6 +109,8 @@ repowax::watchers:
 Change history
 --------------
 
+* v0.3
+    * Renamed repowax to avoid confusion with similar services
 * v0.2
     * Stopped performing automatic version patch on pkg, hostalias defaults to ::fqdn in Puppet install
 * v0.1
