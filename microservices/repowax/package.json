@@ -1,5 +1,5 @@
 {
-  "name": "repowatch",
+  "name": "repowax",
   "version": "0.2.0",
   "private": true,
   "dependencies": {
@@ -34,9 +34,9 @@
   },
   "pkg": {},
   "scripts": {
-    "repowatch-dev:win32": "set DEBUG=repowatch:* && nodemon ./bin/www",
-    "trigger-repw": "curl --data \"param1=value1&param2=value2\" -XPOST http://localhost:3001/repowatch/my-repo",
-    "test": "set CI=true && set DEBUG=repowatch:* && react-scripts test src/app.test.js",
-    "build-pkg": "pkg --targets linux --output ../../files/repowatch/repowatch.bin bin/www"
+    "repowax-dev:win32": "set DEBUG=repowax:* && nodemon ./bin/www",
+    "trigger-repw": "curl --data \"param1=value1&param2=value2\" -XPOST http://localhost:3001/repowax/my-repo",
+    "test": "set CI=true && set DEBUG=repowax:* && react-scripts test src/app.test.js",
+    "build-pkg": "pkg --targets linux --output ../../files/repowax/repowax.bin bin/www"
   }
 }

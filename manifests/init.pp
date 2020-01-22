@@ -1,19 +1,19 @@
-class repowatch (
+class repowax (
 
-  $user                 = 'repowatchdeploy',
+  $user                 = 'repowaxdeploy',
   $group                = 'www-data',
   $service_user         = 'node',
-  $service_name         = 'repowatch',
+  $service_name         = 'repowax',
   $servername           = 'localhost',
-  $artifact_module      = 'repowatch',
+  $artifact_module      = 'repowax',
   $hostalias            = $::fqdn,
   $aliases              = [],
   $cert_directory_path  = '/etc/pki/tls/certs',
   $key_directory_path   = '/etc/pki/tls/private',
   $cert_name            = undef,
   $webhook              = undef,
-  $source_path          = 'repowatch',
-  $target_path          = '/srv/repowatch',
+  $source_path          = 'repowax',
+  $target_path          = '/srv/repowax',
   $default_html_docroot = '/var/www/html',
   $watchers             = {},
   $watcher_defaults     = {},
@@ -21,7 +21,7 @@ class repowatch (
 ) {
 
   if ($watchers != {}) {
-    create_resources(repowatch::watcher, $watchers, $watcher_defaults)
+    create_resources(repowax::watcher, $watchers, $watcher_defaults)
   }
 
 }

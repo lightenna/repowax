@@ -6,7 +6,7 @@ const logger = require('./modules/logger');
 const indexRouter = require('./routes/index');
 const pkg = require('../package.json');
 const { updateSlack } = require('./modules/slack');
-const debug = require('debug')('repowatch:app');
+const debug = require('debug')('repowax:app');
 const env = require('process').env;
 require('dotenv').config();
 

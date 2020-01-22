@@ -1,6 +1,6 @@
 const env = require('process').env;
 require('dotenv').config();
-const debug = require('debug')('repowatch:envcheck');
+const debug = require('debug')('repowax:envcheck');
 const fs = require('fs');
 
 const validateEnvironment = () => {

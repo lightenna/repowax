@@ -1,4 +1,4 @@
-Repowatch
+repowax
 =========
 
 Purpose
@@ -21,9 +21,9 @@ Webhooks
 --------
 Webhooks should take the form:
 ```
-https://<server_name>:<external_port>/repowatch/<working_directory_leaf>
+https://<server_name>:<external_port>/repowax/<working_directory_leaf>
 ```
-e.g. `https://staging.myapp.example.com:7777/repowatch/my-repo`
+e.g. `https://staging.myapp.example.com:7777/repowax/my-repo`
 
 Environment
 -----------
@@ -43,19 +43,19 @@ Optionally, the following environment variables can be set:
 Running
 -------
 PM2 can be used with an `ecosystem.config.js` file to set the environment variables and run the service:
-+ `pm2 start /srv/repowatch/ecosystem.config.js --env staging --watch`
++ `pm2 start /srv/repowax/ecosystem.config.js --env staging --watch`
 
 An example `ecosystem.config.js` might look thus:
 ```
 module.exports = {
     apps : [{
-        name: "repowatch",
+        name: "repowax",
         watch: [
-            "/srv/repowatch/repowatch.bin",
-            "/srv/repowatch/ecosystem.config.js"
+            "/srv/repowax/repowax.bin",
+            "/srv/repowax/ecosystem.config.js"
         ],
         watch_delay: 1000,
-        script: "/srv/repowatch/repowatch.bin",
+        script: "/srv/repowax/repowax.bin",
         env: {
             NODE_ENV: "development",
         },
@@ -77,9 +77,9 @@ This is app is based on Node/Express.
 
 Build
 -----
-The `repowatch.bin` binary can be downloaded into files/dist or built using Node and `pkg`:
+The `repowax.bin` binary can be downloaded into files/dist or built using Node and `pkg`:
 ```
-cd microservices/repowatch
+cd microservices/repowax
 npm install
 npm run build-pkg
 ```
@@ -88,17 +88,17 @@ Install
 -------
 Installation can be done manually or using Puppet:
 ```
-class { 'repowatch' : }
+class { 'repowax' : }
 ```
 or:
 ```
-include 'repowatch'
+include 'repowax'
 ```
 with class attributes set in Hiera:
 ```
-repowatch::servername: "%{::fqdn}"
-repowatch::webhook: "https://hooks.slack.com/services/123456789/123456789/012345678901234567890123"
-repowatch::watchers:
+repowax::servername: "%{::fqdn}"
+repowax::webhook: "https://hooks.slack.com/services/123456789/123456789/012345678901234567890123"
+repowax::watchers:
     my_repo:
         repo_list:
             - '/srv/git/github.com/my-repo:origin/staging'

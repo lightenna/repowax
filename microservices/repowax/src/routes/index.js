@@ -3,7 +3,7 @@ const router = express.Router();
 const { validateEnvironment, validateSecret, getRepoList, env } = require('../modules/envcheck');
 const logger = require('../modules/logger');
 const { updateSlack } = require('../modules/slack');
-const debug = require('debug')('repowatch:index');
+const debug = require('debug')('repowax:index');
 const boom = require('@hapi/boom');
 const { exec, spawnSync } = require('child_process');
 const path = require('path');
@@ -21,10 +21,10 @@ router.get('/', function(req, res, next) {
         return next(boom.failedDependency('Unable to validate environment variables.'));
     }
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ title: "repowatch" }));
+    res.end(JSON.stringify({ title: "repowax" }));
 });
 
-router.post('/repowatch/:workingleaf', function(req, res, next) {
+router.post('/repowax/:workingleaf', function(req, res, next) {
     return updateRepo(req, res, next);
 });
 

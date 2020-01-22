@@ -1,6 +1,6 @@
 const env = require('process').env;
 require('dotenv').config();
-const debug = require('debug')('repowatch:slack');
+const debug = require('debug')('repowax:slack');
 const Slack = require('slack-node');
 
 const updateSlack = (message) => {
@@ -9,7 +9,7 @@ const updateSlack = (message) => {
         slack.setWebhook(env.REPW_SLACKWEBHOOK);
         slack.webhook({
             channel: "#auto",
-            username: "repowatch",
+            username: "repowax",
             text: message
         }, function(err, response) {
             if (err) {

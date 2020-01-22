@@ -1,12 +1,12 @@
 module.exports = {
     apps : [{
-        name: "repowatch",
+        name: "repowax",
         watch: [
-            "<%= $target_path %>/repowatch.bin",
+            "<%= $target_path %>/repowax.bin",
             "<%= $target_path %>/ecosystem.config.js"
         ],
         watch_delay: 1000,
-        script: "<%= $target_path %>/repowatch.bin",
+        script: "<%= $target_path %>/repowax.bin",
         env: {
             NODE_ENV: "development",
         },

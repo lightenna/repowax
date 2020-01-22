@@ -1,12 +1,12 @@
 {
-  "name": "repowatch",
+  "name": "repowax",
   "version": "0.1",
   "author": "(c) Lightenna",
   "summary": "Github webhook listener for automatically updating working copies",
   "license": "Apache-2.0",
-  "source": "https://github.com/lightenna/repowatch",
-  "project_page": "https://github.com/lightenna/repowatch",
-  "issues_url": "https://github.com/lightenna/repowatch/issues",
+  "source": "https://github.com/lightenna/repowax",
+  "project_page": "https://github.com/lightenna/repowax",
+  "issues_url": "https://github.com/lightenna/repowax/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
