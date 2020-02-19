@@ -19,7 +19,7 @@ define repowax::watcher (
   $webhook                = $repowax::webhook,
   $repo_list              = [],
   $secret                 = undef,
-  $manage_vhost           = true,
+  $install_vhosts         = true,
   $transfer_files         = true,
   $external_service_https = true,
 
@@ -86,7 +86,7 @@ define repowax::watcher (
   }
 
   # set up apache vhost
-  if ($manage_vhost) {
+  if ($install_vhosts) {
     # all external requests are proxied (to app/microservices) and require basic auth
     apache::vhost { "repowax-watcher-${apache_port}-${service_port}-vhost":
       port            => $apache_port,
