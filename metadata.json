@@ -1,6 +1,6 @@
 {
   "name": "repowax",
-  "version": "0.1",
+  "version": "0.4.0",
   "author": "(c) Lightenna",
   "summary": "Github webhook listener for automatically updating working copies",
   "license": "Apache-2.0",
@@ -15,6 +15,10 @@
     {
       "name": "puppetlabs/apache",
       "version_requirement": ">= 5.0.0"
+    },
+    {
+      "name": "devopera/webtools",
+      "version_requirement": ">= 0.1.1"
     }
   ],
   "data_provider": null,

@@ -85,57 +85,25 @@ define repowax::watcher (
         | END
   }
 
+  # register internal services []
+  @domotd::register { "repowax[${service_port}]" : }
+
   # set up apache vhost
   if ($install_vhosts) {
-    # all external requests are proxied (to app/microservices) and require basic auth
-    apache::vhost { "repowax-watcher-${apache_port}-${service_port}-vhost":
-      port            => $apache_port,
-      servername      => $servername,
-      serveraliases   => $aliases,
-      docroot         => $default_html_docroot,
-      docroot_owner   => $user,
-      docroot_group   => $group,
-      proxy_requests  => false, # Off
-      custom_fragment => @("END")
-        ProxyPass        "/${service_name}/"  "http://localhost:${service_port}/${service_name}/"
-        ProxyPassReverse "/${service_name}/"  "http://localhost:${service_port}/${service_name}/"
-      | END
-    }
-
-    # by default, all external requests are made over HTTPS
-    if ($external_service_https) {
-      ::Apache::Vhost <| title == "repowax-watcher-${apache_port}-${service_port}-vhost" |> {
-        ssl               => true,
-        ssl_cert          => "${cert_directory_path}/${cert_name}.crt",
-        ssl_ca            => "${cert_directory_path}/${cert_name}.ca-bundle",
-        ssl_key           => "${key_directory_path}/${cert_name}.key",
-        # verify client required in order to include ssl_ca
-        ssl_verify_client => 'none',
-      }
-    }
-
-    if (($apache_port != 80) and ($apache_port != 443)) {
-      if (str2bool($::selinux)) {
-        ensure_resource(selinux::port, "repowax-watcher-${apache_port}-port", {
-          seltype  => 'http_port_t',
-          port     => $apache_port,
-          protocol => 'tcp',
-          notify   => Class['::apache::service'],
-        })
-        ensure_resource(selinux::port, "repowax-watcher-${service_port}-port", {
-          seltype  => 'http_port_t',
-          port     => $service_port,
-          protocol => 'tcp',
-          notify   => Class['::apache::service'],
-        })
-      }
-
-      if defined(Class['domotd']) {
-        # register external services ()
-        @domotd::register { "Apache(${apache_port})" : }
-        # register internal services []
-        @domotd::register { "repowax[${service_port}]" : }
-      }
+    webtools::proxyport { "repowax-watcher-proxyport-${apache_port}":
+      service_port           => $service_port,
+      service_path           => $service_name,
+      apache_port            => $apache_port,
+      apache_path            => $service_name,
+      external_service_https => $external_service_https,
+      servername             => $servername,
+      aliases                => $aliases,
+      cert_directory_path    => $cert_directory_path,
+      key_directory_path     => $key_directory_path,
+      cert_name              => $cert_name,
+      default_html_docroot   => $default_html_docroot,
+      user                   => $user,
+      group                  => $group,
     }
   }
 

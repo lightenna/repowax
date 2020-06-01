@@ -109,6 +109,8 @@ repowax::watchers:
 Change history
 --------------
 
+* v0.4.0
+    * Introduced dependency upon webtools::proxyport
 * v0.3
     * Renamed repowax to avoid confusion with similar services
 * v0.2
