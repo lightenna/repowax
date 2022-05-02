@@ -10,7 +10,7 @@ class repowax (
   $aliases              = [],
   $cert_directory_path  = '/etc/pki/tls/certs',
   $key_directory_path   = '/etc/pki/tls/private',
-  $cert_name            = undef,
+  $cert_name            = $::fqdn,
   $webhook              = undef,
   $source_path          = 'repowax',
   $target_path          = '/srv/repowax',
