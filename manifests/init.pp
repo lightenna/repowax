@@ -4,7 +4,7 @@ class repowax (
   $group                = 'www-data',
   $service_user         = 'node',
   $service_name         = 'repowax',
-  $servername           = 'localhost',
+  $servername           = $::fqdn,
   $artifact_module      = 'repowax',
   $hostalias            = $::fqdn,
   $aliases              = [],
