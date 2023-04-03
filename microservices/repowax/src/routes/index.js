@@ -32,7 +32,6 @@ const updateRepo = (req, res, next) => {
     if (!validateEnvironment()) {
         return next(boom.failedDependency('Unable to validate environment variables.'));
     }
-    // @todo validate secret
     if (!validateSecret(req)) {
         return next(boom.failedDependency('Unable to validate secret against reference.'));
     }
@@ -47,6 +46,7 @@ const updateRepo = (req, res, next) => {
             exec(command, (err, stdout, stderr) => {
                 const hostname = env.REPW_HOSTALIAS || req.headers.host;
                 if (err) {
+                    // treat command line error as secret error, relay to Slack
                     const msg = `Failed attempt to update repo on ${hostname}`;
                     logger.error(msg, stderr, err);
                     updateSlack(`${msg}:\n` + stderr);
@@ -60,7 +60,6 @@ const updateRepo = (req, res, next) => {
         }
     });
     res.setHeader('Content-Type', 'application/json');
-    // give little away in the response
     res.end(JSON.stringify({ result: "OK", returnCode: matches}));
 };
 

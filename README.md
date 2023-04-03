@@ -109,7 +109,9 @@ repowax::watchers:
 Change history
 --------------
 
-* v0.4.0
+* v0.5
+    * Exported as docker container
+* v0.4
     * Introduced dependency upon webtools::proxyport
 * v0.3
     * Renamed repowax to avoid confusion with similar services

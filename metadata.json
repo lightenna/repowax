@@ -1,8 +1,8 @@
 {
   "name": "repowax",
-  "version": "0.4.1",
+  "version": "0.1.0",
   "author": "(c) Lightenna",
-  "summary": "Github webhook listener for automatically updating working copies",
+  "summary": "Puppet module for Github webhook listener to automatically update working copies",
   "license": "Apache-2.0",
   "source": "https://github.com/lightenna/repowax",
   "project_page": "https://github.com/lightenna/repowax",

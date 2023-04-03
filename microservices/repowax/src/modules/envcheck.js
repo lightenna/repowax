@@ -1,7 +1,9 @@
 const env = require('process').env;
 require('dotenv').config();
+const crypto = require('crypto');
 const debug = require('debug')('repowax:envcheck');
 const fs = require('fs');
+const logger = require("./logger");
 
 const validateEnvironment = () => {
     // test for required environment variables
@@ -12,7 +14,20 @@ const validateEnvironment = () => {
 };
 
 const validateSecret = (req) => {
-    // assume secret is fine for now
+    const authoritative_secret = env.REPW_SECRET;
+    const sigHeaderName = 'X-Hub-Signature-256';
+    const sigHashAlg = 'sha256';
+    if (!req.body) {
+        return false;
+    }
+    const sig = Buffer.from(req.get(sigHeaderName) || '', 'utf8');
+    const hmac = crypto.createHmac(sigHashAlg, authoritative_secret);
+    const data = JSON.stringify(req.body);
+    const digest = Buffer.from(sigHashAlg + '=' + hmac.update(data).digest('hex'), 'utf8');
+    if (sig.length !== digest.length || !crypto.timingSafeEqual(digest, sig)) {
+        return false;
+    }
+    // otherwise the secret is fine
     return true;
 };
 
