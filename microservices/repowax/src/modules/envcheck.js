@@ -1,9 +1,6 @@
 const env = require('process').env;
 require('dotenv').config();
 const crypto = require('crypto');
-const debug = require('debug')('repowax:envcheck');
-const fs = require('fs');
-const logger = require("./logger");
 
 const validateEnvironment = () => {
     // test for required environment variables

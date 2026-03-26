@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('./app');
-const {env} = require("process");
+
 require('dotenv').config();
 const crypto = require("crypto");
 const debug = require('debug')('repowax:app.test');

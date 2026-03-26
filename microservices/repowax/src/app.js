@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const path = require('path');
@@ -7,7 +8,7 @@ const indexRouter = require('./routes/index');
 const pkg = require('../package.json');
 const { updateSlack } = require('./modules/slack');
 const debug = require('debug')('repowax:app');
-const bodyParser = require('body-parser')
+
 const env = require('process').env;
 require('dotenv').config();
 

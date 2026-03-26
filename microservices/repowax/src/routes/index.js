@@ -3,9 +3,9 @@ const router = express.Router();
 const { validateEnvironment, validateSecret, getRepoList, env } = require('../modules/envcheck');
 const logger = require('../modules/logger');
 const { updateSlack } = require('../modules/slack');
-const debug = require('debug')('repowax:index');
+
 const boom = require('@hapi/boom');
-const { exec, spawnSync } = require('child_process');
+const { exec } = require('child_process');
 const path = require('path');
 
 router.get('/heartbeat/', function(req, res, next) {
