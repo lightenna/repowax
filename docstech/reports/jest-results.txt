@@ -1,41 +1,41 @@
 # Jest Test Results
-# Version: 0.6.0
-# Date: 2026-03-27T13:05:21Z
+# Version: 0.6.1
+# Date: 2026-03-27T14:14:55Z
 # Command: npx jest --watchAll=false --verbose
 # ---
 PASS src/app.test.js
   Packaged repowax component
     GET /
       ✓ returns title (14 ms)
-      ✓ returns 424 when environment is invalid (3 ms)
+      ✓ returns 424 when environment is invalid (5 ms)
     GET /heartbeat/
       ✓ returns healthy status (2 ms)
       ✓ returns 424 when environment is invalid (2 ms)
     environment validation on POST
-      ✓ rejects when REPW_PULLS is empty (8 ms)
+      ✓ rejects when REPW_PULLS is empty (7 ms)
       ✓ rejects when REPW_SECRET is empty (2 ms)
-      ✓ rejects when REPW_SECRET is shorter than 32 characters (1 ms)
+      ✓ rejects when REPW_SECRET is shorter than 32 characters (2 ms)
     HMAC signature validation
       ✓ rejects request with missing signature header (1 ms)
       ✓ rejects request with wrong signature (2 ms)
-      ✓ rejects request signed with wrong secret (2 ms)
-      ✓ accepts request with valid signature (3 ms)
+      ✓ rejects request signed with wrong secret (1 ms)
+      ✓ accepts request with valid signature (4 ms)
     replay protection
       ✓ rejects request without X-GitHub-Delivery header (1 ms)
-      ✓ rejects replayed delivery with same ID (4 ms)
-      ✓ accepts different delivery IDs (4 ms)
+      ✓ rejects replayed delivery with same ID (5 ms)
+      ✓ accepts different delivery IDs (7 ms)
     webhook route matching
-      ✓ matches repo leaf and returns count 1 (2 ms)
+      ✓ matches repo leaf and returns count 1 (3 ms)
       ✓ returns count 0 for non-matching leaf (1 ms)
-      ✓ matches default remote/branch when not specified (2 ms)
+      ✓ matches default remote/branch when not specified (3 ms)
       ✓ matches across multiple repos in REPW_PULLS (3 ms)
       ✓ supports custom list separator (2 ms)
     error handling
-      ✓ returns 404 for unknown routes (1 ms)
-      ✓ hides error details outside development mode (2 ms)
+      ✓ returns 404 for unknown routes (2 ms)
+      ✓ hides error details outside development mode (1 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       21 passed, 21 total
 Snapshots:   0 total
-Time:        0.295 s
+Time:        0.424 s
 Ran all test suites.

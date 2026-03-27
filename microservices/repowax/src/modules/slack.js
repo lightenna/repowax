@@ -6,7 +6,7 @@ const { IncomingWebhook } = require('@slack/webhook');
 const updateSlack = (message) => {
     if (env.REPW_SLACKWEBHOOK && env.REPW_SLACKWEBHOOK.length > 20) {
         const webhook = new IncomingWebhook(env.REPW_SLACKWEBHOOK);
-        webhook.send({ text: message }).then((response) => {
+        webhook.send({ text: message, username: 'repowax' }).then((response) => {
             debug(response);
         }).catch((err) => {
             debug(err);

@@ -1,6 +1,6 @@
 {
   "name": "repowax",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "dependencies": {
     "@hapi/boom": "^10.0.1",
