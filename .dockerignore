@@ -1,0 +1,14 @@
+**/node_modules
+**/dist-prod
+**/.env
+**/app.log
+**/.git
+**/.idea
+**/terraform
+**/puppet
+**/scripts
+**/*.md
+**/docstech
+**/.eslintrc.json
+**/.gitignore
+**/gulpfile.js

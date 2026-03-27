@@ -1,13 +1,12 @@
-# generic microservice Dockerfile
-# based on latest Ubuntu LTS
-FROM ubuntu:latest
+# repowax microservice container
+FROM node:22-slim
 
 ARG SERVICENAME=repowax
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 
-# install minimal packages to enable run and test
-RUN apt-get -qq update && apt-get -qq -y install curl net-tools git
+# install git for runtime repo operations
+RUN apt-get -qq update && apt-get -qq -y install git openssh-client && rm -rf /var/lib/apt/lists/*
 
 # create app directory
 WORKDIR "/app/$SERVICENAME"
@@ -17,10 +16,16 @@ RUN echo "Creating repowax:repowax-data (${USER_ID}:${GROUP_ID})"
 RUN groupadd -g ${GROUP_ID} repowax-data
 RUN useradd -u ${USER_ID} -g ${GROUP_ID} -m -s /bin/bash repowax
 
-# transfer app package
-COPY ./dist-prod/repowax-linux .
+# install production dependencies first (layer caching)
+COPY ./microservices/repowax/package.json ./microservices/repowax/package-lock.json ./
+RUN npm ci --omit=dev
 
-# give executing user read-only access to executable (and copied dependencies)
+# copy application source
+COPY ./microservices/repowax/bin ./bin
+COPY ./microservices/repowax/src ./src
+COPY ./microservices/repowax/public ./public
+
+# give executing user read-only access to app
 RUN chown repowax:repowax-data -R ./ && chmod 0555 -R ./
 USER repowax
 
@@ -34,9 +39,5 @@ RUN mkdir -p /home/repowax/.ssh && \
 ENV PORT=3001
 EXPOSE 3001/tcp
 
-# by default, tell the service to kick out only log.info, not all debugging information
-# ENV DEBUG="*"
-# ENV DEBUG_COLORS="false"
-
 # run as non-root user
-CMD [ "./repowax-linux" ]
+CMD [ "node", "bin/www" ]
